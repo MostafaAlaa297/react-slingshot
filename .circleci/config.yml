@@ -1,4 +1,4 @@
-version 2.1
+version: 2.1
 
 jobs:
   build:
@@ -20,12 +20,13 @@ jobs:
     steps:
       - run: npm i
       - run: npm audit
-workflow:
-  jobs:
-    - build
-    - test:
-        requires:
-          - build
-    - analyze:
-        requires:
-          - test
+workflows:
+  my_workflow:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - analyze:
+          requires:
+            - test
